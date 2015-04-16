@@ -20,8 +20,7 @@ public class WordsCollection{
 		Random R = new Random();
 		//get random index from the table
 		int num;
-		num = R.nextInt(words.length);
-		System.out.println(num);
+		num = R.nextInt(words.length); // I'm using Random class, it's easier (although probably more CPU/memeory consuming)
 		return words[num];
 	}
 }

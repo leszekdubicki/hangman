@@ -26,14 +26,16 @@ public class Hangman{
 			if (len>1){
 				System.out.println("Please provide only one character!");
 			}
+			else if (((int)c.charAt(0) < 97) || ((int)c.charAt(0) > 97+26)){
+				System.out.println("Please provide lowercase letter!"); //so it should be called nextLetter() :)
+			}
 		} while (len > 1); //Scanner already takes care of providing nothing at input
 		return c.charAt(0);
 	}
 	public static void main(String args[]){
 		Executioner E= new Executioner();
-		System.out.println(E.hang(7));
 		WordsCollection W = new WordsCollection();
-		char letter;
+		char letter; //variable for letters the user will input
 		Scanner ScanObj = new Scanner(System.in);
 
 		String word;
@@ -44,15 +46,32 @@ public class Hangman{
 			word = W.getRandomWord(); //get random word from collection class
 			//System.out.println(word); //print the word for testing purpose
 			Guesser = new GuessWord(word); //initialize new guessing manager
-			while (Guesser.isAlive()){
-
-				System.out.print("Type a letter: ");
+			while ((Guesser.isAlive()) && (!Guesser.won()) ){
+				//only loop asking for letters if the player alives and the game is not won yet.
+				clearscreen();
+				System.out.println(Guesser.displayStatus());
+				System.out.print("\nType a letter: ");
 				letter = nextChar(ScanObj);
 				//but it
-				clearscreen();
-				// System.out.println(letter); //print the letter for testing purpose
+
+				while (Guesser.checkLetter(letter)) {
+					System.out.println("This letter was already used, try different one...");
+					letter = nextChar(ScanObj);
+				};
 				Guesser.takeAGuess(letter);
-				System.out.println(Guesser.displayStatus());
+
+			}
+			if (Guesser.won()){
+				System.out.println("You've won, do you want to play again?");
+			}
+			else {
+				System.out.println("You've lost, do you want to play again?");
+			}
+
+			answer = nextChar(ScanObj);
+			while ((answer != 'y') && (answer != 'n') ){
+				System.out.println("Please provide 'y' or 'n' !");
+				answer = nextChar(ScanObj);
 			}
 
 		} while (answer == 'y');

@@ -25,13 +25,8 @@ public class Executioner{
 		indexes[4] = indexes[3] + 1;
 		indexes[5] = indexes[4] + 13;
 		indexes[6] = indexes[5] + 2;
-		//temporary scanner:
-		//Scanner sc = new Scanner(System.in); int j = 2;
 		for (int i = livesLost;i<7;i++){
-			//System.out.println(indexes[i]);
-			//j = sc.nextInt();
 			gallowsBuff.replace(indexes[i],indexes[i]+1," ");
-			//System.out.println(gallowsBuff);
 		}
 
 		return gallowsBuff.toString();

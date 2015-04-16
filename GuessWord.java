@@ -25,24 +25,38 @@ public class GuessWord{
 			//of course for mobile app I should not do it just in case.
 		}
     }
-    private boolean checkLetter(char letter){
+    public boolean checkLetter(char letter){
 		//checks if letter was already used (true if used false if not)
 		//sets the letter as used if not
 		//I will use ascii character code to convert into index of my array of boleeans of used letters
 		int index = (int)letter - 97;
 		boolean returnValue = true; //I assume it was used already and will check if it's true in the next step.
 		if (lettersUsed[index] != true){
-			lettersUsed[index] = true;
+			//lettersUsed[index] = true; //not very clever, I'll rather set it aomewhere else
 			returnValue = false;
 		}
 		return returnValue;
+	}
+	public String getLettersUsed(){
+		//returns string with all the letters that were already used:
+		StringBuffer letters = new StringBuffer(); //temporary stringBuffer to store the letters
+		for (int i=0;i<lettersUsed.length;i++){
+			if (lettersUsed[i] == true){
+				letters.append((char)(i+97));
+			}
+		}
+		return letters.toString();
+	}
+	private void markLetterAsUsed(char letter){
+		//this method marks letter as used
+		int index = (int)letter - 97; //convert char into our array index
+		lettersUsed[index] = true; //set proper array value into true.
 	}
     public boolean takeAGuess(char letter){
 		boolean sthWasGuessed = false;
         //if letter wasn't used than check if it is in the word and other stuff:
         if (!checkLetter(letter)){
-			//notice that the method checkLetter already took care of setting proper value in lettersUsed array
-			//this can be dangerous, I know, but I use this method only here and I set it to private
+			markLetterAsUsed(letter); //set this letter to used so it won't be processed next time.
         	attempts+=1;
 	        for (int i=0;i<word.length();i++){
 	            if (word.charAt(i) == letter){
@@ -69,16 +83,28 @@ public class GuessWord{
             return true;
         }
     }
+    public boolean won(){
+		//method that returns true only if the guesser is won:
+		boolean isWon = true; //initialy true, let's check if it's true:
+		for (int i=0; i<guessed.length; i++){
+			if (!guessed[i]){
+				isWon = false;
+				//no point to keep looping:
+				break; //I know we didn't have it during classes but I know this instruction from python already.
+			}
+		}
+		return isWon;
+	}
     public String displayStatus(){
         //returns string to be displayed when asked for status of the game for this particular word
         StringBuffer status;
         status = new StringBuffer();
-        status.append(whatWasGused+"\n\n"); //disp hidden and guessed letters
         status.append(kat.hang(livesLost));//the gallows :)
-        status.append("\n");
-        status.append("You have had "+ Integer.toString(attempts)+" attempts\n");
-        status.append("You have lost "+Integer.toString(livesLost)+" lives\n");
-        status.append("You have "+Integer.toString(7-livesLost)+" lives left\n");
+        status.append("\n\n");
+        status.append("        Lives: "+Integer.toString(7-livesLost)+"\n"); //how many lives has left
+        status.append("         Word: "+whatWasGused+"\n"); //disp hidden and guessed letters
+        status.append("     Attempts: "+ Integer.toString(attempts)+"\n"); //additionally - how many attempts were made
+        status.append(" Letters used: "+ getLettersUsed()+"\n");
         return status.toString();
     }
 }//end of class
