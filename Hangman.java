@@ -1,9 +1,9 @@
-
-/*
+/**
 Main application class for HANGMAN project in JAVA
-Author:	Leszek Dubicki
+@uthor:	Leszek Dubicki
+studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
-ID:	x14125439
+@date: 06/04/2015
 */
 
 import java.util.Scanner;

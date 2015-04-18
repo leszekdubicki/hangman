@@ -1,8 +1,8 @@
 /**
-Class for processing one word for HANGMAN project in JAVA
-Author:	Leszek Dubicki
+@uthor:	Leszek Dubicki
+studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
-ID:	x14125439
+@date: 05/04/2015 (I've actually created this one at first - couldn't resist ;)
 */
 import java.util.Scanner;
 public class Executioner{

@@ -1,3 +1,10 @@
+/**
+Class taking care for processing/playing on one word (guessing it)
+@uthor:	Leszek Dubicki
+studentID:	x14125439
+email:	Leszek.Dubicki@student.ncirl.ie
+@date: 06/04/2015
+*/
 public class GuessWord{
     private String word; //word passed to the object
     private StringBuffer whatWasGused; //stringbuffer to manipulate displayed status of word guessing, should be array probably
