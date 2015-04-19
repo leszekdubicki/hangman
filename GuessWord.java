@@ -1,6 +1,6 @@
 /**
-Class taking care for processing/playing on one word (guessing it)
-@uthor:	Leszek Dubicki
+GuessWord.java -- Class taking care for processing/playing on one word (guessing it)
+@author:	Leszek Dubicki
 studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
 @date: 06/04/2015

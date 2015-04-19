@@ -1,5 +1,5 @@
 /**
-Class only for displaying gallows with hanging man
+Executioner.java -- Class only for displaying gallows with hanging man
 @author:	Leszek Dubicki
 studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie

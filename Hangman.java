@@ -1,6 +1,6 @@
 /**
-Main application class for HANGMAN project in JAVA
-@uthor:	Leszek Dubicki
+Hangman.java -- Main application class for HANGMAN project in JAVA
+@author:	Leszek Dubicki
 studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
 @date: 06/04/2015

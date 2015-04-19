@@ -1,6 +1,6 @@
 /**
-Class for storing all words and for providing random word from the list on request.
-@uthor:	Leszek Dubicki
+WordsCollection.java -- Class for storing all words and for providing random word from the list on request.
+@author:	Leszek Dubicki
 studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
 @date: 10/04/2015
