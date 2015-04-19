@@ -19,27 +19,33 @@ public class Hangman{
 		//it's actually missing method from Scanner class
 		//it will use scanner instance already initialized in main
 		String c;
-		int len;
+		int len; boolean isValid;
 		do{
 			c = Sc.next();//get string
 			len = c.length(); //get length of it
+            isValid = true;
 			if (len>1){
 				System.out.println("Please provide only one character!");
+                isValid = false;
 			}
 			else if (((int)c.charAt(0) < 97) || ((int)c.charAt(0) > 97+26)){
-				System.out.println("Please provide lowercase letter!"); //so it should be called nextLetter() :)
+				System.out.println("Please provide lowercase letter!"); //so it should be called nextLetter() not nextChar() :)
+                isValid = false;
 			}
-		} while (len > 1); //Scanner already takes care of providing nothing at input
+		} while ((len > 1) || (!isValid)); //Scanner already takes care of providing nothing at input
 		return c.charAt(0);
 	}
 	public static void main(String args[]){
-		Executioner E= new Executioner();
 		WordsCollection W = new WordsCollection();
 		char letter; //variable for letters the user will input
 		Scanner ScanObj = new Scanner(System.in);
-
+        
 		String word;
 		GuessWord Guesser;
+        //game stats variables:
+        int games = 0;
+        int wonGames = 0;
+
 		//main application loop:
 		char answer = 'y';
 		do {
@@ -61,12 +67,25 @@ public class Hangman{
 				Guesser.takeAGuess(letter);
 
 			}
+            System.out.println("");
 			if (Guesser.won()){
-				System.out.println("You've won, do you want to play again?");
+                games += 1;
+                wonGames += 1;
+				System.out.println("Congratularions! You've won.");
 			}
 			else {
-				System.out.println("You've lost, do you want to play again?");
+                games += 1;
+				System.out.println("I'm sorry. You've lost the game.");
 			}
+            System.out.println("");
+            System.out.println("The word was: "+word);
+            System.out.println("");
+            System.out.println("Game statistics: ");
+            System.out.println("Games played  : " + Integer.toString(games));
+            System.out.println("Games won     : " + Integer.toString(wonGames));
+            System.out.println("Games lost    : " + Integer.toString(games - wonGames));
+            System.out.println("");
+            System.out.println("Do you want to play again? ");
 
 			answer = nextChar(ScanObj);
 			while ((answer != 'y') && (answer != 'n') ){

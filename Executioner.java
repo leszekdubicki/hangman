@@ -1,10 +1,10 @@
 /**
-@uthor:	Leszek Dubicki
+Class only for displaying gallows with hanging man
+@author:	Leszek Dubicki
 studentID:	x14125439
 email:	Leszek.Dubicki@student.ncirl.ie
 @date: 05/04/2015 (I've actually created this one at first - couldn't resist ;)
 */
-import java.util.Scanner;
 public class Executioner{
 	public String hang(int livesLost){
 		StringBuffer gallowsBuff = new StringBuffer();
